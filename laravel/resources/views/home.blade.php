@@ -26,7 +26,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{ asset('files/xfitness.apk') }}" class="btn btn-brown" title="Download .apk">Download .apk</a>
+                    <a href="{{ asset('files/xfitness.apk') }}" class="btn btn-brown" title="Download Android .apk">Download Android .apk</a>
                 </div>
             </div>
         </div>
