@@ -12,8 +12,8 @@
     <body>
         <div class="flex-center position-ref full-height">
             <div class="content">
-                <div class="title m-b-md">
-                    <img src="{{ asset('images/logo.svg') }}" width="250" alt="{{ config('app.name') }}">
+                <div class="m-b-md">
+                    @svg('images/logo.svg')
                 </div>
 
                 <h4>
