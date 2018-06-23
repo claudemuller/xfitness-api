@@ -28,10 +28,6 @@ html, body {
   text-align: center;
 }
 
-.title {
-  font-size: 84px;
-}
-
 .links {
   margin-top: 40px;
 }
@@ -49,6 +45,10 @@ html, body {
 
 .m-b-md {
   margin-bottom: 30px;
+
+  svg {
+    width: 250px;
+  }
 }
 
 .source-links {
