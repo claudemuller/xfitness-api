@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Blade;
+use DOMDocument;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
             $path = trim($path, "' ");
             $class = trim($class, "' ");
 
-            $svg = new \DOMDocument();
+            $svg = new DOMDocument();
             $svg->load(public_path($path));
             $svg->documentElement->setAttribute('class', $class);
             $output = $svg->saveXML($svg->documentElement);
