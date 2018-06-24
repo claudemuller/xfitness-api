@@ -49,6 +49,11 @@ class AuthController extends Controller
         ]);
 
         $this->sendVerificationEmail($user->email, $user->name, $verification_code);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Thanks for signing up! Check out your mail to verify your email address and complete the registration process'
+        ]);
     }
 
     /**
@@ -102,6 +107,7 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required'
         ]);
+
         if ($validator->fails()) {
             return response()->json([
                 'success' => false,
@@ -116,7 +122,7 @@ class AuthController extends Controller
                 return response()->json([
                     'success' => false,
                     'error' => 'We can\'t find an account with those credentials'
-                ], 401);
+                ]);
             }
         } catch (JWTException $e) {
             return response()->json([
@@ -197,8 +203,6 @@ class AuthController extends Controller
      * @param $email
      * @param $name
      * @param $verification_code
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     private function sendVerificationEmail($email, $name, $verification_code)
     {
@@ -212,10 +216,5 @@ class AuthController extends Controller
             $mail->to($email, $name);
             $mail->subject($subject);
         });
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Thanks for signing up! Check out your mail to verify your email address and complete the registration process'
-        ]);
     }
 }
