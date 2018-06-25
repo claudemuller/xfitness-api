@@ -24,7 +24,10 @@ class MembersController extends Controller
     /**
      * Save all the members to DB
      *
+     * @param Request $request
+     *
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function saveMembers(Request $request)
     {
@@ -36,11 +39,15 @@ class MembersController extends Controller
                     'name' => $member->name
                 ]);
             }
+
+            if (property_exists ($member, 'remove')) {
+                Member::find($member->id)->delete();
+            }
         }
 
         return response()->json([
             'success' => true,
-            'message' => 'Members were successfully saved'
+            'message' => 'Members were successfully updated'
         ]);
     }
 }
