@@ -3,9 +3,9 @@
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
 use App\Member;
-use App\Session;
+use App\Workout;
 
-class SessionsTableSeeder extends Seeder
+class WorkoutsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,7 +17,7 @@ class SessionsTableSeeder extends Seeder
         $now_plus_an_hour = Carbon::now()->addHour();
         $plus_an_hour_plus_thirty_mins = $now_plus_an_hour->addHour();
 
-        $sessions = [
+        $workouts = [
             [
                 'session_start' => Carbon::now(),
                 'session_end' => $now_plus_an_hour,
@@ -30,17 +30,17 @@ class SessionsTableSeeder extends Seeder
             ],
         ];
 
-        for ($i = 0; $i < count($sessions); $i++) {
-            $sessions[$i] = Session::create($sessions[$i]);
+        for ($i = 0; $i < count($workouts); $i++) {
+            $workouts[$i] = Workout::create($workouts[$i]);
         }
 
         $members = Member::all();
         $member1 = $members->get(0);
         $member2 = $members->get(1);
 
-        $newSessions = Session::all();
-        $newSessions->get(0)->members()->attach($member1);
-        $newSessions->get(1)->members()->attach($member1);
-        $newSessions->get(1)->members()->attach($member2);
+        $newWorkouts = Workout::all();
+        $newWorkouts->get(0)->members()->attach($member1);
+        $newWorkouts->get(1)->members()->attach($member1);
+        $newWorkouts->get(1)->members()->attach($member2);
     }
 }

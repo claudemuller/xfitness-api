@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Session extends Model
+class Workout extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -14,7 +14,7 @@ class Session extends Model
     protected $fillable = ['session_start', 'session_end'];
 
     /**
-     * A session belongs to many members
+     * A workout belongs to many members
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
@@ -24,7 +24,7 @@ class Session extends Model
     }
 
     /**
-     * A session belongs to a user
+     * A workout belongs to a user
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

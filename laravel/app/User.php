@@ -49,12 +49,12 @@ class User extends Authenticatable implements JWTSubject
     }
 
     /**
-     * A user has many sessions
+     * A user has many workouts
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function sessions()
+    public function workouts()
     {
-        return $this->hasMany('App\Session');
+        return $this->hasMany('App\Workout');
     }
 }

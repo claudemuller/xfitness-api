@@ -14,12 +14,12 @@ class Member extends Model
     protected $fillable = ['name'];
 
     /**
-     * A member belongs to many sessions
+     * A member belongs to many workouts
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function sessions()
+    public function workouts()
     {
-        return $this->belongsToMany('App\Session');
+        return $this->belongsToMany('App\Workout');
     }
 }
