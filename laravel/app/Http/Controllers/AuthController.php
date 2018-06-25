@@ -131,9 +131,15 @@ class AuthController extends Controller
             ], 500);
         }
 
+        $user = User::where('email', $request->email)->first();
+
         return response()->json([
             'success' => true,
-            'data' => ['token' => $token]
+            'data' => [
+                'name' => $user->name,
+                'email' => $user->email,
+                'token' => $token
+            ]
         ]);
     }
 
