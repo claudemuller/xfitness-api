@@ -13,8 +13,10 @@ class WorkoutsController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getWorkouts() {
-        $workouts = Workout::all();
+    public function getWorkouts(Request $request) {
+        $user_id = JWTAuth::toUser($request->token)->id;
+
+        $workouts = Workout::where('user_id', $user_id)->get();
 
         return response()->json([
             'success' => true,
@@ -37,7 +39,7 @@ class WorkoutsController extends Controller
         $session_end = date('Y-m-d H:i:s', $request->session_end / 1000);
         $user_id = JWTAuth::toUser($request->token)->id;
 
-        $session = Workout::create([
+        $workout = Workout::create([
             'user_id' => $user_id,
             'session_start' => $session_start,
             'session_end' => $session_end
@@ -45,7 +47,7 @@ class WorkoutsController extends Controller
         $members = array_map(function ($member) {
             return $member->id;
         }, $members);
-        $session->members()->attach($members);
+        $workout->members()->attach($members);
 
         return response()->json([
             'success' => true,
