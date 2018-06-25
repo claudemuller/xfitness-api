@@ -80,16 +80,10 @@ class AuthController extends Controller
             $user->update(['is_verified' => true]);
             DB::table('user_verifications')->where('token', $verification_code)->delete();
 
-            return response()->json([
-                'success' => true,
-                'message' => 'Your email address was successfully verified'
-            ]);
+            return view('verified')->with('failed', false);
         }
 
-        return response()->json([
-            'success' => false,
-            'message' => 'Invalid verification code'
-        ]);
+        return view('verified')->with('failed', true);
     }
 
     /**
