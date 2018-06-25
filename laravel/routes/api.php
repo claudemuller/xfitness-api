@@ -15,5 +15,5 @@ Route::group(['middleware' => ['jwt.auth']], function () {
     Route::get('logout', 'AuthController@logout');
 
     Route::get('members', 'MembersController@getMembers');
-    Route::post('members', 'MembersController@saveMembers');
+    Route::post('members', 'MembersController@updateMembers');
 });

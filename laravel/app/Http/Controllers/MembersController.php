@@ -22,14 +22,14 @@ class MembersController extends Controller
     }
 
     /**
-     * Save all the members to DB
+     * Upadte the members array to DB
      *
      * @param Request $request
      *
      * @return \Illuminate\Http\JsonResponse
      * @throws \Exception
      */
-    public function saveMembers(Request $request)
+    public function updateMembers(Request $request)
     {
         $members = json_decode($request->members);
 
