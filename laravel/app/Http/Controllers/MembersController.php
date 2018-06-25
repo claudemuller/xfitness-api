@@ -26,12 +26,21 @@ class MembersController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function saveMembers()
+    public function saveMembers(Request $request)
     {
+        $members = json_decode($request->members);
+
+        foreach ($members as $member) {
+            if (!array_key_exists('id', $member)) {
+                Member::create([
+                    'name' => $member->name
+                ]);
+            }
+        }
 
         return response()->json([
             'success' => true,
-            'message' => 'Users were successfully saved'
+            'message' => 'Members were successfully saved'
         ]);
     }
 }
