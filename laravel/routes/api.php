@@ -16,4 +16,7 @@ Route::group(['middleware' => ['jwt.auth']], function () {
 
     Route::get('members', 'MembersController@getMembers');
     Route::post('members', 'MembersController@updateMembers');
+
+    Route::get('workouts', 'WorkoutsController@getWorkouts');
+    Route::post('workout', 'WorkoutsController@saveWorkout');
 });

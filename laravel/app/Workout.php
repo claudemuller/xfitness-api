@@ -11,7 +11,7 @@ class Workout extends Model
      *
      * @var array
      */
-    protected $fillable = ['session_start', 'session_end'];
+    protected $fillable = ['user_id', 'session_start', 'session_end', 'members'];
 
     /**
      * A workout belongs to many members
