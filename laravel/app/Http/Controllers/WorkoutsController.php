@@ -16,7 +16,7 @@ class WorkoutsController extends Controller
     public function getWorkouts(Request $request) {
         $user_id = JWTAuth::toUser($request->token)->id;
 
-        $workouts = Workout::where('user_id', $user_id)->get();
+        $workouts = Workout::with('members')->where('user_id', $user_id)->get();
 
         return response()->json([
             'success' => true,
