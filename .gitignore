@@ -1,3 +1,5 @@
 /public_html/hot
 /public_html/storage
 /.idea
+.php_cs.cache
+.vimrc
